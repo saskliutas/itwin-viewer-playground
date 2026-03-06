@@ -4,8 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { IModelConnection } from "@itwin/core-frontend";
-import { SchemaContext } from "@itwin/ecschema-metadata";
-import { ECSchemaRpcLocater } from "@itwin/ecschema-rpcinterface-common";
 import {
   createECSchemaProvider,
   createECSqlQueryExecutor,
@@ -27,29 +25,12 @@ import {
 } from "@itwin/presentation-shared";
 import { useIModelUnifiedSelectionTree } from "@itwin/presentation-hierarchies-react";
 
-// Cache schema contexts per iModel to avoid reloading schemas.
-const imodelSchemaContextsCache = new Map<string, SchemaContext>();
-
-function getIModelSchemaContext(imodel: IModelConnection): SchemaContext {
-  const imodelKey = createIModelKey(imodel);
-  let context = imodelSchemaContextsCache.get(imodelKey);
-  if (!context) {
-    context = new SchemaContext();
-    context.addLocater(new ECSchemaRpcLocater(imodel.getRpcProps()));
-    imodelSchemaContextsCache.set(imodelKey, context);
-    imodel.onClose.addListener(() =>
-      imodelSchemaContextsCache.delete(imodelKey),
-    );
-  }
-  return context;
-}
-
 export type IModelAccess = Props<
   typeof useIModelUnifiedSelectionTree
 >["imodelAccess"];
 
 export function createIModelAccess(imodel: IModelConnection): IModelAccess {
-  const schemaProvider = createECSchemaProvider(getIModelSchemaContext(imodel));
+  const schemaProvider = createECSchemaProvider(imodel.schemaContext);
   return {
     imodelKey: createIModelKey(imodel),
     ...schemaProvider,
