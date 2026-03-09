@@ -27,6 +27,9 @@ import {
 import { selectionStorage } from "../selectionStorage";
 import { propertyGridUiProvider, treeWidgetUiProvider } from "./UiProviders";
 import { useAuthorizationContext } from "./Authorization";
+import { setLogger } from "@itwin/presentation-hierarchies";
+import { Logger } from "@itwin/core-bentley";
+import { createLogger } from "@itwin/presentation-core-interop";
 
 interface AppProps {
   iTwinId: string;
@@ -43,6 +46,7 @@ export function App({ iTwinId, iModelId, changesetId }: AppProps) {
     await PropertyGridManager.initialize();
     await MeasureTools.startup();
     MeasurementActionToolbar.setDefaultActionProvider();
+    setLogger(createLogger(Logger));
   }, []);
 
   return (
@@ -96,7 +100,7 @@ function viewConfiguration(viewPort: ScreenViewport) {
           ViewerPerformance.addMeasure(
             "TileTreesLoaded",
             "ViewerStarting",
-            "TilesLoaded"
+            "TilesLoaded",
           );
           clearInterval(intvl);
           resolve(true);
