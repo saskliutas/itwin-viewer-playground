@@ -16,7 +16,6 @@ import {
 } from "@itwin/tree-widget-react";
 
 import { selectionStorage } from "../selectionStorage";
-import { TestTree } from "./test-tree/TestTree";
 
 export const treeWidgetUiProvider = {
   id: "TreeWidgetUIProvider",
@@ -49,11 +48,6 @@ export const treeWidgetUiProvider = {
               onFeatureUsed={props.onFeatureUsed}
             />
           ),
-        },
-        {
-          id: "TestTree",
-          getLabel: () => "Models & Elements",
-          render: () => <TestTree />,
         },
       ],
     }),
