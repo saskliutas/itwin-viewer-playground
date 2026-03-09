@@ -17,6 +17,7 @@ import {
 
 import { selectionStorage } from "../selectionStorage";
 import { TestTree } from "./test-tree/TestTree";
+import { SpatialTree } from "./spatial-tree/SpatialTree";
 
 export const treeWidgetUiProvider = {
   id: "TreeWidgetUIProvider",
@@ -54,6 +55,11 @@ export const treeWidgetUiProvider = {
           id: "TestTree",
           getLabel: () => "Models & Elements",
           render: () => <TestTree />,
+        },
+        {
+          id: "SpatialTree",
+          getLabel: () => "Spatial",
+          render: () => <SpatialTree />,
         },
       ],
     }),
