@@ -1,11 +1,11 @@
 ---
 name: imodel-hierarchical-data-ui
-description: Instructions and best practices for building a UI Tree component displaying iModel data
+description: Instructions and best practices for building/modifying a UI Tree component displaying iModel data in a hierarchical way
 ---
 
 # Goal
 
-Build UI Tree component displaying iModel data in a hierarchical way defined by user.
+Build/modify UI Tree component displaying iModel data in a hierarchical way defined by user.
 
 # How to build tree component
 
