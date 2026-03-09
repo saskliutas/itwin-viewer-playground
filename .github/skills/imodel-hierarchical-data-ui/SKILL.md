@@ -18,6 +18,8 @@ To render the tree structure in the UI, use `@itwin/presentation-hierarchies-rea
 Documentation for `@itwin/presentation-hierarchies` library can be found here - https://github.com/iTwin/presentation/blob/master/packages/hierarchies/README.md
 Documentation for `@itwin/presentation-hierarchies-react` library can be found here - https://github.com/iTwin/presentation/blob/master/packages/hierarchies-react/README.md
 
+Prefer placing the data generation part in a separate file from the UI part. This will allow for better separation of concerns and make it easier to maintain the code.
+
 # iModel data structure
 
 Data in iModel is structured based on ECSchemas and can be pulled using ECSQL queries. All ECSchemas are based on primitives defined in the BisCore schema (BIS).
