@@ -7,7 +7,7 @@ description: Instructions and best practices for building/modifying a UI Tree co
 
 Build/modify UI Tree component displaying iModel data in a hierarchical way defined by user.
 
-# How to build tree component
+## How to build tree component
 
 Tree component should be built in two parts - data generation and UI. Data generation part should be responsible for pulling data from IModel . UI part should be responsible for rendering the tree structure based on the data provided by the data generation part.
 
@@ -20,19 +20,19 @@ Documentation for `@itwin/presentation-hierarchies-react` library can be found h
 
 Prefer placing the data generation part in a separate file from the UI part. This will allow for better separation of concerns and make it easier to maintain the code.
 
-# iModel data structure
+## iModel data structure
 
 Data in iModel is structured based on ECSchemas and can be pulled using ECSQL queries. All ECSchemas are based on primitives defined in the BisCore schema (BIS).
 
 Documentation for ECSQL queries can be found here - https://www.itwinjs.org/learning/
 Documentation for ECSchemas can be found here - https://www.itwinjs.org/bis/ec/
 
-# ECSchemas
+## ECSchemas
 
-Different domains can have their own ECSchema based on BisCore. For example, for structural engineering domain, there is a StructuralAnalysis ECSchema that defines classes related to structural analysis. For architectural domain, there is an Architectural ECSchema that defines classes related to architecture.
+Different domains can have their own ECSchema based on BisCore. For example, for structural engineering domain, there is a StructuralAnalysis ECSchema that defines classes related to structural analysis.
 
 Schemas are defined in .ecschema.xml files and can be found here - https://github.com/iTwin/bis-schemas/tree/master/Domains
 
-# Performance tips
+## Performance tips
 
-- Prefer using ECNavigation property over ECRelationshipClass when linking related instances in ECSQL
+- Prefer using ECNavigation property over ECRelationshipClass when joining related instances in ECSQL
